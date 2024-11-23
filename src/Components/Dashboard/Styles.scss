@@ -1,0 +1,232 @@
+/* General Design Variables */
+$primary-color: #00ca00;
+$secondary-color: #00b894;
+$background-color: #f7f9fc;
+$text-color: #333;
+$button-bg: $primary-color;
+$card-bg: #ffffff;
+$button-hover: darken($button-bg, 10%);
+$disabled-button-bg: lighten($button-bg, 30%);
+$table-header-bg: #00796b;
+$accent-color: #e74c3c;
+
+$font-family: 'Roboto', sans-serif;
+
+$break-color: #ff9800;
+$off-duty-color: #f44336;
+$icon-size: 1.5rem;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* General Body */
+body {
+  font-family: $font-family;
+  background-color: $background-color;
+  color: $text-color;
+}
+
+/* Dashboard Wrapper */
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  background-color: $background-color;
+
+  /* Header */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 800px;
+    padding: 1.5rem;
+    background-color: $card-bg;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+
+    h2 {
+      color: $primary-color;
+      font-size: 2rem;
+    }
+
+    .datetime {
+      font-size: 1.25rem;
+      color: $text-color;
+    }
+  }
+
+  /* Status Indicator */
+  .status-indicator {
+    display: flex;
+    justify-content: space-around;
+    gap: 1.5rem;
+    padding: 1rem;
+    background-color: $card-bg;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 2rem auto;
+
+    .status-card {
+      flex: 1;
+      padding: 1rem;
+      text-align: center;
+      border-radius: 10px;
+      background-color: lighten($card-bg, 5%);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: scale(1.05);
+        background-color: lighten($card-bg, 10%);
+      }
+
+      .status-icon {
+        font-size: $icon-size;
+        margin-bottom: 0.5rem;
+      }
+
+      .status-label {
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-bottom: 0.25rem;
+      }
+
+      .status-description {
+        font-size: 1rem;
+        color: darken($text-color, 20%);
+      }
+
+      &.on-duty {
+        .status-icon {
+          color: $primary-color;
+        }
+      }
+
+      &.on-break {
+        .status-icon {
+          color: $break-color;
+        }
+      }
+
+      &.off-duty {
+        .status-icon {
+          color: $off-duty-color;
+        }
+      }
+    }
+  }
+
+  /* Actions Section */
+  .actions {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+
+    button {
+      flex: 1;
+      padding: 0.75rem 1rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #fff;
+      background-color: $button-bg;
+      border: none;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: $button-hover;
+      }
+
+      &:disabled {
+        background-color: $disabled-button-bg;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  /* Shift Progress Section */
+  .progress-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $card-bg;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+
+    h3 {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: $primary-color;
+      margin-bottom: 1rem;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 20px;
+      background-color: lighten($primary-color, 40%);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+
+      .progress {
+        height: 100%;
+        background-color: $primary-color;
+        transition: width 0.5s ease;
+      }
+    }
+
+    .progress-details {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      font-size: 1rem;
+      color: $text-color;
+
+      span {
+        flex: 1;
+        text-align: center;
+      }
+    }
+  }
+
+  /* Shift Summary Section */
+  .summary {
+    margin-top: 2rem;
+    width: 100%;
+    max-width: 600px;
+    background-color: $card-bg;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    h3 {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: $primary-color;
+      margin-bottom: 1rem;
+    }
+
+    div {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+
+      span:first-child {
+        font-weight: bold;
+        color: $text-color;
+      }
+
+      span:last-child {
+        color: darken($text-color, 15%);
+      }
+    }
+  }
+}
